@@ -9,16 +9,53 @@
 <body>
     <header>
         <h1>Computer4U</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/store">Store</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <h2>Product 1</h2>
-        <img src="https://via.placeholder.com/250" alt="Product 1">
-        <p><strong>Price:</strong> $499.99</p>
-        <p>This is a detailed description of Product 1. Perfect for high-performance tasks and gaming.</p>
-        <button onclick="history.back()">Back to Store</button>
+        <section class="product-details">
+            <h2>Product 1</h2>
+            <div class="product-image">
+                <img src="https://via.placeholder.com/250" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <p><strong>Price:</strong> $499.99</p>
+                <p>This is a detailed description of Product 1. Perfect for high-performance tasks and gaming.</p>
+                <button onclick="history.back()">Back to Store</button>
+            </div>
+        </section>
+
+        <section class="product-reviews">
+            <h3>Customer Reviews</h3>
+            <ul>
+                <li>⭐⭐⭐⭐☆ - Great product! Highly recommend for gamers.</li>
+                <li>⭐⭐⭐⭐⭐ - Excellent performance, does exactly what I need!</li>
+                <li>⭐⭐⭐⭐☆ - Good value for the price, but could use better cooling.</li>
+            </ul>
+        </section>
+
+        <section class="related-products">
+            <h3>Related Products</h3>
+            <ul>
+                <li><a href="/product2">Product 2</a></li>
+                <li><a href="/product3">Product 3</a></li>
+                <li><a href="/product4">Product 4</a></li>
+            </ul>
+        </section>
     </main>
+
     <footer>
         <p>&copy; 2025 Computer4U. All rights reserved.</p>
+        <ul>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+        </ul>
     </footer>
 </body>
 </html>
