@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - Computer4U</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        header nav ul li {
+            display: inline;
+        }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        footer ul li {
+            display: inline;
+        }
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        footer ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Store Page Styles */
+        .store-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .store-header input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .store-header select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            max-width: 100%;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        .product h3 {
+            margin: 0.5rem 0;
+        }
+        .product p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+        .product button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function filterProducts() {
+            const searchInput = document.getElementById('search').value.toLowerCase();
+            const categoryFilter = document.getElementById('category').value;
+            const products = document.querySelectorAll('.product');
+
+            products.forEach(product => {
+                const productName = product.querySelector('h3').innerText.toLowerCase();
+                const productCategory = product.getAttribute('data-category');
+                if (
+                    productName.includes(searchInput) &&
+                    (categoryFilter === 'all' || productCategory === categoryFilter)
+                ) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Computer4U</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/store">Store</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Store Header: Search and Filter -->
+        <div class="store-header">
+            <input
+                type="text"
+                id="search"
+                placeholder="Search for products..."
+                oninput="filterProducts()"
+            />
+            <select id="category" onchange="filterProducts()">
+                <option value="all">All Categories</option>
+                <option value="laptops">Laptops</option>
+                <option value="desktops">Desktops</option>
+                <option value="accessories">Accessories</option>
+            </select>
+        </div>
+
+        <!-- Product Grid -->
+        <section class="product-grid">
+            <!-- Example Product 1 -->
+            <div class="product" data-category="laptops">
+                <img src="https://via.placeholder.com/250" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$499.99</p>
+                <button onclick="location.href='/product1'">View Details</button>
+            </div>
+
+            <!-- Example Product 2 -->
+            <div class="product" data-category="desktops">
+                <img src="https://via.placeholder.com/250" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$299.99</p>
+                <button onclick="location.href='/product2'">View Details</button>
+            </div>
+
+            <!-- Example Product 3 -->
+            <div class="product" data-category="accessories">
+                <img src="https://via.placeholder.com/250" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$199.99</p>
+                <button onclick="location.href='/product3'">View Details</button>
+            </div>
+
+            <!-- Add more products as needed -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Computer4U. All rights reserved.</p>
+        <ul>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
