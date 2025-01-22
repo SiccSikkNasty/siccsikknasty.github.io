@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer4U</title>
+    <title>Computer4U - Home</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <style>
+        /* General Styling */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -17,22 +18,23 @@
         header {
             background-color: #0056b3;
             color: white;
-            padding: 1rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
         }
 
         header nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 1rem 0 0;
             display: flex;
             justify-content: center;
-            gap: 1rem;
-        }
-
-        header nav ul li {
-            display: inline;
+            gap: 1.5rem;
         }
 
         header nav ul li a {
@@ -46,20 +48,24 @@
         }
 
         main {
-            padding: 2rem;
+            padding: 2rem 1rem;
             text-align: center;
+        }
+
+        .intro {
+            margin-bottom: 2rem;
         }
 
         .intro h2 {
             color: #0056b3;
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .store {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
             margin-top: 2rem;
         }
 
@@ -70,7 +76,7 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product:hover {
@@ -88,6 +94,7 @@
         .product h3 a {
             text-decoration: none;
             color: #0056b3;
+            font-weight: bold;
         }
 
         .product h3 a:hover {
@@ -96,59 +103,22 @@
 
         .product p {
             color: #555;
+            font-size: 1rem;
             margin-bottom: 1rem;
         }
 
         .product button {
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 5px;
             font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.3s;
         }
 
         .product button:hover {
-            background-color: #218838;
-        }
-
-        .cart {
-            margin-top: 3rem;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .cart h2 {
-            margin-top: 0;
-        }
-
-        .cart ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .cart ul li {
-            margin: 0.5rem 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .cart button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .cart button:hover {
             background-color: #0056b3;
         }
 
@@ -156,8 +126,8 @@
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
         }
 
         footer ul {
@@ -193,36 +163,29 @@
 
     <main>
         <section class="intro">
-            <h2>Your one-stop destination for all things computers</h2>
-            <p>Explore the latest gadgets, reviews, and tips to enhance your tech life.</p>
+            <h2>Your One-Stop Shop for Tech</h2>
+            <p>Discover top-notch computers and accessories tailored to your needs. Experience quality, affordability, and unmatched performance.</p>
         </section>
 
         <section class="store">
             <div class="product">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYxtnUCwbFrI5lA48GUe1hhHDzRgJTuNSWAg&s" alt="Product 1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYxtnUCwbFrI5lA48GUe1hhHDzRgJTuNSWAg&s" alt="Big Mommy PC">
                 <h3><a href="product1.html">Big Mommy PC</a></h3>
                 <p>$499.99</p>
-                <button onclick="addToCart('Product 1', 499.99)">Add to Cart</button>
+                <button onclick="window.location.href='product1.html'">More Info</button>
             </div>
             <div class="product">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYMMiQCrPF9NqPBV37yaUXFjb6tIFiIy1MCw&amp;s" alt="Product 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYMMiQCrPF9NqPBV37yaUXFjb6tIFiIy1MCw&amp;s" alt="Office Scrub">
                 <h3><a href="product2.html">Office Scrub</a></h3>
                 <p>$299.99</p>
-                <button onclick="addToCart('Product 2', 299.99)">Add to Cart</button>
+                <button onclick="window.location.href='product2.html'">More Info</button>
             </div>
             <div class="product">
-                <img src="https://c1.neweggimages.com/productimage/nb640/BPBAS2310180FPH7K75.jpg" alt="Product 3">
+                <img src="https://c1.neweggimages.com/productimage/nb640/BPBAS2310180FPH7K75.jpg" alt="Basic Bitch">
                 <h3><a href="product3.html">Basic Bitch</a></h3>
                 <p>$199.99</p>
-                <button onclick="addToCart('Product 3', 199.99)">Add to Cart</button>
+                <button onclick="window.location.href='product3.html'">More Info</button>
             </div>
-        </section>
-
-        <section class="cart">
-            <h2>Your Cart</h2>
-            <ul id="cart-items"></ul>
-            <p id="cart-total">Total: $0.00</p>
-            <button onclick="checkout()">Checkout</button>
         </section>
     </main>
 
