@@ -122,25 +122,81 @@
         .product button:hover {
             background-color: #0056b3;
         }
+
+        /* Cart Styles */
+        .cart {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .cart h2 {
+            margin-bottom: 1rem;
+        }
+        .cart ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cart ul li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .cart button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .cart button:hover {
+            background-color: #0056b3;
+        }
     </style>
     <script>
-        function filterProducts() {
-            const searchInput = document.getElementById('search').value.toLowerCase();
-            const categoryFilter = document.getElementById('category').value;
-            const products = document.querySelectorAll('.product');
+        let cart = [];
 
-            products.forEach(product => {
-                const productName = product.querySelector('h3').innerText.toLowerCase();
-                const productCategory = product.getAttribute('data-category');
-                if (
-                    productName.includes(searchInput) &&
-                    (categoryFilter === 'all' || productCategory === categoryFilter)
-                ) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
+        function addToCart(productName, price) {
+            const existingProduct = cart.find(product => product.name === productName);
+            if (existingProduct) {
+                existingProduct.quantity++;
+            } else {
+                cart.push({ name: productName, price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartContainer = document.getElementById('cart');
+            const cartList = cartContainer.querySelector('ul');
+            const totalContainer = cartContainer.querySelector('.total');
+            cartList.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(product => {
+                total += product.price * product.quantity;
+                cartList.innerHTML += `
+                    <li>
+                        ${product.name} - $${product.price} x ${product.quantity}
+                    </li>`;
             });
+
+            totalContainer.innerText = `Total: $${total.toFixed(2)}`;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            alert('Thank you for your purchase!');
+            cart = [];
+            updateCart();
         }
     </script>
 </head>
@@ -157,7 +213,7 @@
     </header>
 
     <main>
-        <!-- Store Header: Search and Filter -->
+        <!-- Store Header -->
         <div class="store-header">
             <input
                 type="text"
@@ -175,31 +231,32 @@
 
         <!-- Product Grid -->
         <section class="product-grid">
-            <!-- Example Product 1 -->
             <div class="product" data-category="laptops">
                 <img src="https://via.placeholder.com/250" alt="Product 1">
                 <h3>Product 1</h3>
                 <p>$499.99</p>
-                <button onclick="location.href='/product1'">View Details</button>
+                <button onclick="addToCart('Product 1', 499.99)">Add to Cart</button>
             </div>
-
-            <!-- Example Product 2 -->
             <div class="product" data-category="desktops">
                 <img src="https://via.placeholder.com/250" alt="Product 2">
                 <h3>Product 2</h3>
                 <p>$299.99</p>
-                <button onclick="location.href='/product2'">View Details</button>
+                <button onclick="addToCart('Product 2', 299.99)">Add to Cart</button>
             </div>
-
-            <!-- Example Product 3 -->
             <div class="product" data-category="accessories">
                 <img src="https://via.placeholder.com/250" alt="Product 3">
                 <h3>Product 3</h3>
                 <p>$199.99</p>
-                <button onclick="location.href='/product3'">View Details</button>
+                <button onclick="addToCart('Product 3', 199.99)">Add to Cart</button>
             </div>
+        </section>
 
-            <!-- Add more products as needed -->
+        <!-- Cart -->
+        <section class="cart" id="cart">
+            <h2>Your Cart</h2>
+            <ul></ul>
+            <p class="total">Total: $0.00</p>
+            <button onclick="checkout()">Checkout</button>
         </section>
     </main>
 
